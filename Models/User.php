@@ -13,6 +13,14 @@
             $req = $db->prepare('SELECT * FROM LoginUsers WHERE Username = ?');
             $req->execute([$username]);
             return $req->fetch(PDO::FETCH_ASSOC);
+        }   
+
+        //getAllUsers()
+        public static function getAllUsers(){
+            $db = self::getConnection();
+            $req = $db->prepare('SELECT * FROM LoginUsers');
+            $req->execute();
+            return $req->fetchAll(PDO::FETCH_ASSOC);
         }
     }
 ?>

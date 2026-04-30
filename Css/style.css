@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-
 }
 
 .title {
@@ -20,11 +19,11 @@
 .form_container form {
     display: flex;
     flex-direction: column;
+    width: 200px;
 }
 
-.form_container form input, button {
-    margin-bottom: 30px;
-    width: 200px;
+.form_container form input,.form_container form button {
+    margin-bottom: 20px;
 }
 
 .title_right {
@@ -45,11 +44,15 @@
 
 }
 
-.body_container a {
+.body_side a {
     color: black;
     text-decoration: none;
     padding: 20px;
-    background-color: gray;
+    background-color: rgb(223, 223, 223);
+}
+.body_side a:hover {
+    background-color: rgb(168, 168, 168);
+
 }
 
 .body_container .body_side{
@@ -57,3 +60,41 @@
     flex-direction: column;
     
 }
+
+.body_main {
+    margin: 0px 20px;
+
+}
+
+.body_main_contribution td, th{
+    width: 150px;
+    height: 40px;
+    text-align: start;
+
+}
+
+.body_main_contribution button{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+}
+.body_main_contribution table {
+    border-collapse: collapse;
+}
+
+.body_main_contribution .tr_family {
+    background-color: rgb(240, 240, 240);
+}
+
+.body_main_Users td, th{
+    width: 150px;
+    height: 40px;
+    text-align: start;
+
+}
+.body_main_Users button{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+}
+
