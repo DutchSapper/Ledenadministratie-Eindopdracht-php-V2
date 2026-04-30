@@ -86,6 +86,7 @@
     background-color: rgb(240, 240, 240);
 }
 
+/* Style from Users */
 .body_main_Users td, th{
     width: 150px;
     height: 40px;
@@ -96,5 +97,16 @@
     width: 150px;
     height: 40px;
     text-align: center;
+}
+.body_main_users_edit {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.body_main_users_edit label,
+.body_main_users_edit input{
+    display: block;
+    width: 100%;
 }
 

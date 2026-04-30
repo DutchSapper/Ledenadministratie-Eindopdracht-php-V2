@@ -12,7 +12,7 @@
     </div>
 
     <div class="form_container">
-    <form method="POST" action="Controllers/UserController.php">  
+    <form method="POST" action="Controllers/LoginController.php">  
         <input type="text" name="Username" placeholder="Username">
         <input type="password" name="Password" placeholder="Password">
         <button type="submit">Log in</button>

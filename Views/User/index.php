@@ -71,7 +71,7 @@
                     echo "</table>";
                     
                 ?>
-                <a href="User/create"><Button>User Toevoegen</Button></a>
+                <a href="create.php"><Button>User Toevoegen</Button></a>
             </div>
 
 

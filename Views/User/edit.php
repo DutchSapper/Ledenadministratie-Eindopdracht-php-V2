@@ -4,6 +4,10 @@
             header('Location: ../Dashboard.php');
             exit();
         }
+
+    require_once '../../Models/User.php';
+    $userid = $_GET['Userid'];
+    $user = User::getById($userid);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,16 +49,15 @@
                 <h2>Users Bewerken</h2>
             </div>
 
-            <div class="body_main_Users_edit">
-                <form action="../Controllers/UserController.php" method="post">
-                    <h2>User bijwerken</h2>
+            <div class="body_main_users_edit">
+                <form action="../../Controllers/UserController.php" method="post">
+                    <h2>User <?php echo $user['Username']; ?>  </h2>
                     <label for="">Username:</label>
-                    <input type="text" name="old_username" value="<?php echo $_SESSION['username'] ?> ">
-                    <input type="text" name="username" placeholder="New username">
+                    <input type="text" name="username" placeholder="<?php echo $user['Username']; ?>">
                     <label for="">New Password:</label>
                     <input id="password" name="password" type="text">
                     <label hidden for="" >role:</label>
-                    <input hidden id="role" name="role" type="text" value="<?php echo $_SESSION['role'] ?> ">
+                    <input hidden id="role" name="role" type="text" value="">
                     <button type="submit">Change</button>
                 </form>
             </div>

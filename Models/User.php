@@ -22,5 +22,28 @@
             $req->execute();
             return $req->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public static function createUser(String $username, String $role, String $password){
+            $db = self::getConnection();
+            $req = $db->prepare('INSERT INTO LoginUsers (username, role, password) VALUES (?, ?, ?) ');
+            $req->execute([$username, $role, $password]);
+        }
+
+        public static function updateUser(String $username, String $role, String $password){
+            $db = self::getConnection();
+            $req = $db->prepare('INSERT INTO LoginUsers (username, role, password) VALUES (?, ?, ?) ');
+            $req->execute([$username, $role, $password]);
+        }
+
+
+
+        // getById
+        public static function getById(INT $userid){
+            $db = self::getConnection();
+            $req = $db->prepare('SELECT * FROM LoginUsers WHERE Userid = ?');
+            $req->execute([$userid]);
+            return $req->fetch(PDO::FETCH_ASSOC);
+        }
+        
     }
 ?>

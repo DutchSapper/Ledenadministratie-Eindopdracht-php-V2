@@ -1,21 +1,36 @@
 <?php
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['Username'];
-    $password = $_POST['Password'];
-
-    require_once '../Models/User.php';
-
-    $user = User::findByUsername($username);
-
-    if ($user && password_verify($password, $user['Password'])) {
-        $_SESSION['Username'] = $user['Username'];
-        $_SESSION['Role'] = $user['Role'];
-
+    session_start();
+    if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 'admin') {
         header('Location: ../Views/Dashboard.php');
         exit();
-    } else {
-        echo 'Ongeldige gebruikersnaam of wachtwoord.';
     }
-}
+
+    // Create User
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = htmlspecialchars($_POST['username']);
+        $role = htmlspecialchars($_POST['role']);
+        $password = htmlspecialchars($_POST['password']);
+        $password = password_hash($password, PASSWORD_DEFAULT); 
+
+        require_once '../Models/User.php';
+        User::createUser($username, $role, $password);
+        header('Location: ../Views/User/index.php');
+        exit();
+    }
+
+    // Edit User
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = htmlspecialchars($_POST['username']);
+        $role = htmlspecialchars($_POST['role']);
+        $password = htmlspecialchars($_POST['password']);
+        $password = password_hash($password, PASSWORD_DEFAULT); 
+
+        require_once '../Models/User.php';
+        User::updateUser($username, $role, $password);
+        header('Location: ../Views/User/index.php');
+        exit();
+    }
+    // Delete User
+
+
+?>
