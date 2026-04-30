@@ -6,7 +6,7 @@
         }
 
     require_once '../../Models/User.php';
-    $userid = $_GET['Userid'];
+    $userid = $_GET['UserId'];
     $user = User::getById($userid);
 ?>
 <!DOCTYPE html>
@@ -53,12 +53,14 @@
                 <form action="../../Controllers/UserController.php" method="post">
                     <h2>User <?php echo $user['Username']; ?>  </h2>
                     <label for="">Username:</label>
-                    <input type="text" name="username" placeholder="<?php echo $user['Username']; ?>">
+                    <input type="text" name="username" required placeholder="<?php echo $user['Username']; ?>">
                     <label for="">New Password:</label>
-                    <input id="password" name="password" type="text">
+                    <input id="password" name="password" required type="password">
                     <label hidden for="" >role:</label>
-                    <input hidden id="role" name="role" type="text" value="">
-                    <button type="submit">Change</button>
+                    <input hidden id="role" name="role" required type="text" value="">
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="id" value="<?php echo $user['UserId']; ?>">
+                    <button type="submit">Uitvoeren</button>
                 </form>
             </div>
 

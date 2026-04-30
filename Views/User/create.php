@@ -53,6 +53,7 @@
                 <input id="role" name="role" type="text" placeholder="Role">
                 <label for="">Password:</label>
                 <input id="password" name="password" type="text">
+                <input type="hidden" name="action" value="create">
                 <button type="submit">Create</button>
             </form>
             </div>

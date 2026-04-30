@@ -6,7 +6,7 @@
         }
 
         //  all() makes connetion with the database and returns all the data.
-        public static function all() {
+        public static function getAll() {
             $db = self::getConnection();
             $req = $db->query('SELECT * FROM Families');
             return $req->fetchAll(PDO::FETCH_ASSOC);

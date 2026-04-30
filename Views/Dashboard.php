@@ -77,8 +77,7 @@
                                     if ($_SESSION['Role'] == 'admin'){
                                         foreach ($families as $family) {
                                             echo "<tr class='tr_family'>";
-                                                echo "<td>" . $family['Famname'] . "</td>";
-                                                echo "<td> </td>";
+                                                echo "<th>" . $family['Famname'] . "</td>";
                                                 echo "<td>€" . $family['TotalContribution'] . "</td>";
                                                 echo "<td><a href='Families/edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
                                                 echo "<td><a href='Contribution/edit.php?Famid=" . $family['FamId'] . "'><button>Contributie Beheren</button></a></td>";
@@ -87,7 +86,6 @@
                                             $fammembers = FamMember::getFamMembers($family['FamId']);
                                             foreach ($fammembers as $member) {
                                                 echo "<tr class='tr_member'>";
-                                                    echo "<td></td>";
                                                     echo "<td>" . $member['Name'] . "</td>";
                                                 echo "</tr>";
                                             }

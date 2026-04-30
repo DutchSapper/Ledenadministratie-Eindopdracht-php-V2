@@ -29,10 +29,10 @@
             $req->execute([$username, $role, $password]);
         }
 
-        public static function updateUser(String $username, String $role, String $password){
+        public static function updateUser(INT $userid, String $username, String $role, String $password){
             $db = self::getConnection();
-            $req = $db->prepare('INSERT INTO LoginUsers (username, role, password) VALUES (?, ?, ?) ');
-            $req->execute([$username, $role, $password]);
+            $req = $db->prepare('UPDATE LoginUsers SET username = ?, role = ?, password = ? WHERE userid = ?');
+            $req->execute([$username, $role, $password, $userid]);
         }
 
 

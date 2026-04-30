@@ -85,6 +85,9 @@
 .body_main_contribution .tr_family {
     background-color: rgb(240, 240, 240);
 }
+.body_main_contribution .tr_member td{
+    padding-left: 20px;
+}
 
 /* Style from Users */
 .body_main_Users td, th{
@@ -108,5 +111,20 @@
 .body_main_users_edit input{
     display: block;
     width: 100%;
+}
+
+.body_main_families button{
+    width: 150px;
+    height: 40px;
+    text-align: center;
+}
+.body_main_families .tr_family {
+    background-color: rgb(240, 240, 240);
+}
+.body_main_families table {
+    border-collapse: collapse;
+}
+.body_main_families .tr_member td{
+    padding-left: 20px;
 }
 
