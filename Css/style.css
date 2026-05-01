@@ -127,4 +127,8 @@
 .body_main_families .tr_member td{
     padding-left: 20px;
 }
+.delete {
+    background-color: red;
+    color: White;
+}
 

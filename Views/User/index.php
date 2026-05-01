@@ -25,13 +25,13 @@
             <a href="../Dashboard.php">Dashboard</a>
             <?php 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'secretaris'){
-                    echo '<a href="Families/index.php">Familie Beheer</a>';
-                    echo '<a href="Families/create.php">Familie Toevoegen</a>';
-                    echo '<a href="FamMembers/index.php">Familie Leden</a>';
+                    echo '<a href="../Families/index.php">Familie Beheer</a>';
+                    echo '<a href="../Families/create.php">Familie Toevoegen</a>';
+                    echo '<a href="../FamMembers/index.php">Familie Leden</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
-                    echo '<a href="Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="../Contribution/index.php">Contributie Beheer</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin'){
@@ -53,7 +53,7 @@
 
                     echo "<table>";
                         echo "<tr>";    
-                            echo "<th>User id:</th>";
+                            // echo "<th>User id:</th>";
                             echo "<th>Username:</th>";
                             echo "<th>Role:</th>";
                             echo "<th>Hashed Password:</th>";
@@ -61,11 +61,12 @@
 
                         foreach ($users as $user){
                             echo "<tr>";
-                                echo "<td>". $user['UserId']."</th>";
+                                // echo "<td>". $user['UserId']."</th>";
                                 echo "<td>". $user['Username']."</th>";
                                 echo "<td>". $user['Role']."</th>";
                                 echo "<td>". $user['Password']."</th>";
                                 echo "<td><a href='edit.php?UserId=" . $user['UserId'] . "'><button>Bewerken</button></a></td>";
+                                echo "<td><a href=''><button class='delete'>Verwijderen</button></a></td>";
                             echo "</tr>";
                         }
                     echo "</table>";

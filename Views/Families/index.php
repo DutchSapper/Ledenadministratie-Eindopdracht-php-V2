@@ -26,16 +26,15 @@
             <?php 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'secretaris'){
                     echo '<a href="index.php">Familie Beheer</a>';
-                    echo '<a href="Families/create.php">Familie Toevoegen</a>';
-                    echo '<a href="FamMembers/index.php">Familie Leden</a>';
+                    echo '<a href="create.php">Familie Toevoegen</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
-                    echo '<a href="Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="../Contribution/index.php">Contributie Beheer</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin'){
-                    echo '<a href="index.php">User Beheer</a>';
+                    echo '<a href="../User/index.php">User Beheer</a>';
                 }
                 
             ?>
@@ -68,7 +67,8 @@
                             echo "<td>" . $family['Postcode'] . "</td>";
                             echo "<td>" . $family['Country'] . "</td>";
                             echo "<td><a href='edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
-                            echo "<td><a href='.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
+                            echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
+                            echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button class='delete'>Verwijderen</button></a></td>";
                         echo "</tr>";
                         // echo "<tr>";
                         //     echo "<th>Familie Leden:</th>";
