@@ -67,12 +67,9 @@
                             echo "<td>" . $family['Postcode'] . "</td>";
                             echo "<td>" . $family['Country'] . "</td>";
                             echo "<td><a href='edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
-                            echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
+                            echo "<td><a href='../FamMembers/index.php'.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
                             echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button class='delete'>Verwijderen</button></a></td>";
                         echo "</tr>";
-                        // echo "<tr>";
-                        //     echo "<th>Familie Leden:</th>";
-                        // echo "</tr>";
 
                         $fammembers = FamMember::getFamMembers($family['FamId']);
                         foreach ($fammembers as $member) {

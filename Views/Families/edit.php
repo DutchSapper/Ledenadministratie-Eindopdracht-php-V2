@@ -47,7 +47,7 @@
                 <h2>Familie: </h2>
                 
             </div>
-
+            <br>
             <div class="body_main_families_edit">
                 <form action="../../Controllers/FamilyController.php" method="POST">
                     <h2><?php echo $family['Famname']; ?>  </h2>
@@ -68,7 +68,7 @@
                     <br>
                     <button type="submit">Uitvoeren</button>
                     <input type="hidden" name="action" value="edit">
-                    <input type="hidden" name="id" value="<?php echo $famid['famid']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $famid; ?>">
                 </form>
                 
             </div>

@@ -4,29 +4,30 @@
         header('Location: ../Views/Dashboard.php');
         exit();
     }
-
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $action = $_POST['action'];
 
-    $famid = htmlspecialchars($_POST['FamId']);
-    $famname = htmlspecialchars($_POST['Famname']);
-    $adress = htmlspecialchars($_POST['Adress']);
-    $city = htmlspecialchars($_POST['City']);
-    $postcode = htmlspecialchars($_POST['Postcode']);
-    $country = htmlspecialchars($_POST['Country']);
-
-    require_once '../Models/User.php';
-
+    $famname = htmlspecialchars($_POST['famname']);
+    $adress = htmlspecialchars($_POST['adress']);
+    $city = htmlspecialchars($_POST['city']);
+    $postcode = htmlspecialchars($_POST['postcode']);
+    $country = htmlspecialchars($_POST['country']);
+    
+    require_once '../Models/Family.php';
+    
     if ($action === 'create') {
-        Family::createFam($famid, $famname, $adress, $city, $postcode, $country);
+        Family::createFam($famname, $adress, $city, $postcode, $country);
+        header('Location: ../Views/Families/index.php');
+        exit();
     }
 
+        
+    $famid = htmlspecialchars($_POST['id']);
     if ($action === 'edit') {
-        $famid = $_POST['famid'];
         Family::updateFam($famid, $famname, $adress, $city, $postcode, $country);
+        header('Location: ../Views/FamMembers/create.php');
+        exit();
     }
-
-    header('Location: ../Views/Families/edit.php?Famid= ?');
-    exit();
 }
