@@ -18,7 +18,7 @@
         <h1>Ledenadministratie</h1>
     </div>
     <div class="title_right">
-        <a href="../index.php">Logout <?php session_abort(); ?></a>
+        <a href="../../index.php">Logout <?php session_abort(); ?></a>
     </div>
     <div class="body_container">
         <div class="body_side">
@@ -44,12 +44,13 @@
                 <h2>Families</h2>
                 
             </div>
-
+            <br>
             <div class="body_main_families">
                 <?php  
                     require_once '../../Models/Family.php';
                     require_once '../../Models/FamMember.php';
                     $families = Family::getAll();
+
                     
                     echo "<table>";
                             echo "<tr>";    
@@ -67,7 +68,7 @@
                             echo "<td>" . $family['Postcode'] . "</td>";
                             echo "<td>" . $family['Country'] . "</td>";
                             echo "<td><a href='edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
-                            echo "<td><a href='../FamMembers/index.php'.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
+                            echo "<td><a href='../FamMembers/index.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
                             echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button class='delete'>Verwijderen</button></a></td>";
                         echo "</tr>";
 
@@ -79,7 +80,7 @@
                         }
                     }
                     echo "</table>";
-                    // $fammembers = FamMember::getFamMembers($family['FamId']);
+                    
 
 
                 ?>

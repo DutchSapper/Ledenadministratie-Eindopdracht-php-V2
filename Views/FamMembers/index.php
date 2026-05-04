@@ -6,10 +6,13 @@
         }
         require_once '../../Models/Family.php';
         require_once '../../Models/FamMember.php';
+        require_once '../../Models/Membertype.php';
         
         $famid = $_GET['Famid'];
-        $familie = Family::getById($famid);
-        var_dump($famid);
+        $family = Family::getById($famid);
+        $fammembers = FamMember::getFamMembers($family['FamId']);
+        $memtypes = Membertype::getMembertype($famid);
+    
         
 ?>
 <!DOCTYPE html>
@@ -32,8 +35,8 @@
             <a href="../Dashboard.php">Dashboard</a>
             <?php 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'secretaris'){
-                    echo '<a href="index.php">Familie Beheer</a>';
-                    echo '<a href="create.php">Familie Toevoegen</a>';
+                    echo '<a href="../Families/index.php">Familie Beheer</a>';
+                    echo '<a href="../Families/create.php">Familie Toevoegen</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
@@ -51,39 +54,42 @@
                 <h2>Familie Leden</h2>
                 
             </div>
-
+            <br>
             <div class="body_main_families">
+                <h2>Familie <?php echo $family['Famname'] ?> </h2>
                 <?php  
                     
                     
                     echo "<table>";
                             echo "<tr>";    
-                                echo "<th>Familie naam:</th>";
-                                echo "<th>Adres</th>";
-                                echo "<th>Dorp/Stad</th>";
-                                echo "<th>Postcode</th>";
-                                echo "<th>Land</th>";
+                                echo "<th>Naam:</th>";
+                                echo "<th>Geboorte datum:</th>";
+                                echo "<th>Leeftijd:</th>";
+                                echo "<th>Beschrijving</th>";
+                                echo "<th>Soort Lid</th>";
+                                echo "<th></th>";
+                                echo "<th></th>";
                             echo "</tr>"; 
                     
-                        echo "<tr class='tr_family'>";
-                            echo "<th>" . 'Famname' . "</th>";
-                            echo "<td>" . 'Adress'. "</td>";
-                            echo "<td>" . 'City' . "</td>";
-                            echo "<td>" . 'Postcode' . "</td>";
-                            echo "<td>" . 'Country' . "</td>";
+                        echo "<tr class='tr_members'>";
+                            foreach ($fammembers as $index => $member) {
+                            echo "<tr class='tr_member'>";
+                                echo "<td>" . $member['Name'] . "</td>";
+                                echo "<td>" . date('d-m-Y', strtotime($member['DateOfBirth'])). "</td>";
+                                echo "<td>" . Date('Y') - date('Y', strtotime($member['DateOfBirth'])) . "</td>";
+                                echo "<td>" . $member['MemDes'] . "</td>";
+                                echo "<td>" . $memtypes[$index]['Description'] . "</td>";
+                                echo "<td><a href='edit.php?FamMemId=" . $member['FamMemId'] . "'><button>Bewerken</button></a></td>";
+                            echo "</tr>";
+                        }
                         echo "</tr>";
+                    echo "</table>"
                     
-                    echo "</table>";
-                    // $fammembers = FamMember::getFamMembers($family['FamId']);
-
-
                 ?>
-                <a href="create.php"><Button>familie Toevoegen</Button></a>
+                <br>
+                <a href="create.php?FamId=<?php echo $family['FamId']; ?>"><Button>Familie lid Toevoegen</Button></a>
             </div>
-
-
         </div>
-    
     </div>
             
     

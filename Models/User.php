@@ -35,8 +35,6 @@
             $req->execute([$username, $role, $password, $userid]);
         }
 
-
-
         // getById
         public static function getById(INT $userid){
             $db = self::getConnection();

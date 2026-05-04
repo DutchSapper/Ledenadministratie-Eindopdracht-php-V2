@@ -4,12 +4,18 @@
         header('Location: ../Dashboard.php');
         exit();
     }
-    require_once '../../Models/Contribution.php';
-    require_once '../../Models/FamMember.php';
+    require_once '../../Models/Membertype.php';
 
-    $famid = $_GET['FamId'];
-    $year = $_GET['year'];
-    $members = Contribution::MemberContribution($famid, $year);
+    $id = $_GET['MemTypId'];
+    $type = Membertype::getById($id);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $description = $_POST['description'];
+        $discount = $_POST['discount'];
+        Membertype::update($id, $description, $discount);
+        header('Location: index.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +40,8 @@
                     echo '<a href="../Families/index.php">Familie Beheer</a>';
                 }
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
-                    echo '<a href="index.php">Contributie Beheer</a>';
-                    echo '<a href="../Membertype/index.php">Membertype Beheer</a>';
+                    echo '<a href="../Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="index.php">Membertype Beheer</a>';
                 }
                 if ($_SESSION['Role'] == 'admin'){
                     echo '<a href="../User/index.php">User Beheer</a>';
@@ -44,28 +50,15 @@
         </div>
         <div class="body_main">
             <div class="body_main_title">
-                <h2>Contributie Bewerken</h2>
+                <h2>Membertype Bewerken</h2>
             </div>
             <br>
-            <form method="POST" action="../../../Controllers/ContributionController.php">
+            <form method="POST" action="../../../Controllers/MemberTypeController.php">
+                <label>Omschrijving:</label><br>
+                <input type="text" name="description" value="<?php echo $type['Description']; ?>" required><br><br>
+                <label>Korting %:</label><br>
+                <input type="number" name="discount" value="<?php echo $type['DiscountPercentage']; ?>" min="0" max="100" required><br><br>
                 <input type="hidden" name="action" value="edit">
-                <input type="hidden" name="year" value="<?php echo $year; ?>">
-                <table>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Contributie bedrag</th>
-                    </tr>
-                    <?php foreach ($members as $member): ?>
-                        <tr>
-                            <td><?php echo $member['Name']; ?></td>
-                            <td>
-                                <input type="hidden" name="famMemId[]" value="<?php echo $member['FamMemId']; ?>">
-                                <input type="number" step="0.01" name="amount[]" value="<?php echo $member['ConAmount']; ?>">
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-                <br>
                 <button type="submit">Opslaan</button>
                 <a href="index.php"><button type="button">Annuleren</button></a>
             </form>

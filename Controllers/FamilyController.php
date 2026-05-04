@@ -19,7 +19,7 @@
     
     if ($action === 'create') {
         Family::createFam($famname, $adress, $city, $postcode, $country);
-        header('Location: ../Views/Families/index.php');
+        header('Location: ../Views/FamMembers/create.php');
         exit();
     }
 
@@ -27,7 +27,7 @@
     $famid = htmlspecialchars($_POST['id']);
     if ($action === 'edit') {
         Family::updateFam($famid, $famname, $adress, $city, $postcode, $country);
-        header('Location: ../Views/FamMembers/create.php');
+        header('Location: ../Views/Families/index.php');
         exit();
     }
 }

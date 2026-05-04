@@ -29,11 +29,11 @@
                     
                     echo '<a href="Families/index.php">Familie Beheer</a>';
                     echo '<a href="Families/create.php">Familie Toevoegen</a>';
-                    echo '<a href="FamMembers/index.php">Familie Leden</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
                     echo '<a href="Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="Membertype/index.php">Member Beheer</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin'){

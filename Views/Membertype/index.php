@@ -1,13 +1,9 @@
 <?php
     session_start();
-        if ($_SESSION['Role'] != 'admin' && $_SESSION['Role'] != 'secretaris') {
-            header('Location: ../Dashboard.php');
-            exit();
-        }
-
-    require_once '../../Models/FamMember.php';
-    $famMemId = $_GET['FamMemId'];
-    $member = FamMember::getFamMember($famMemId);
+    if ($_SESSION['Role'] != 'admin' && $_SESSION['Role'] != 'penningmeester') {
+        header('Location: ../Dashboard.php');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,44 +28,45 @@
                     echo '<a href="../Families/index.php">Familie Beheer</a>';
                     echo '<a href="../Families/create.php">Familie Toevoegen</a>';
                 }
-
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
                     echo '<a href="../Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="index.php">Membertype Beheer</a>';
                 }
-
                 if ($_SESSION['Role'] == 'admin'){
                     echo '<a href="../User/index.php">User Beheer</a>';
                 }
-                
             ?>
         </div>
         <div class="body_main">
             <div class="body_main_title">
-                <h2>Familie lid bewerken</h2>
+                <h2>Membertype Beheer</h2>
             </div>
+            <br>
+            <div class="body_main_families">
+                <?php
+                    require_once '../../Models/Membertype.php';
+                    $membertypes = Membertype::getAll();
 
-            <div class="body_main_users_edit">
-                <form action="../../Controllers/FamMemController.php" method="post">
-                    <h2><?php echo $member['Name']; ?>  </h2>
-                    <label for="">Naam:</label>
-                    <input type="text" name="name" required value="<?php echo $member['Name']; ?>">
-                    <label for="">Geboortedatum:</label>
-                    <input id="dateofbirth" name="dateofbirth" value="<?php echo date('d-m-Y', strtotime($member['DateOfBirth'])); ?>">
-                    <label for="">Beschrijving</label>
-                    <input id="memdes" name="memdes" value="<?php echo $member['MemDes']; ?>">
-
-                    <input type="hidden" name="action" value="edit">
-                    <input type="hidden" name="id" value="<?php echo $member['FamMemId']; ?>">
-                    <br>
-                    <button type="submit">Uitvoeren</button>
-                </form>
+                    echo "<table>";
+                        echo "<tr>";
+                            echo "<th>Type</th>";
+                            echo "<th>Korting %</th>";
+                            echo "<th></th>";
+                            echo "<th></th>";
+                        echo "</tr>";
+                    foreach ($membertypes as $type) {
+                        echo "<tr class='tr_family'>";
+                            echo "<td>" . $type['Description'] . "</td>";
+                            echo "<td>" . $type['DiscountPercentage'] . "%</td>";
+                            echo "<td><a href='edit.php?MemTypId=" . $type['MemTypId'] . "'><button>Bewerken</button></a></td>";
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                ?>
+                <br>
+                <a href="create.php"><button>Membertype Toevoegen</button></a>
             </div>
-
-
         </div>
-    
     </div>
-            
-    
 </body>
 </html>
