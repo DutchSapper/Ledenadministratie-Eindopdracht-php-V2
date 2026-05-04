@@ -36,5 +36,11 @@
             $req = $db->prepare('DELETE FROM fammember WHERE FamMemId = ?');
             $req->execute([$memberid]);
         }
+
+        public static function updateMemTyp(INT $famMemId, INT $memTypId) {
+            $db = self::getConnection();
+            $req = $db->prepare('UPDATE FamMember SET MemTypId = ? WHERE FamMemId = ?');
+            $req->execute([$memTypId, $famMemId]);
+        }
     }
 ?>

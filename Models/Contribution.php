@@ -18,22 +18,24 @@ Class Contribution {
 
     // MemberContribution() - contributie per lid per familie per jaar
     public static function MemberContribution(INT $famid, String $year) {
-        $db = self::getConnection();
-        $req = $db->prepare('SELECT FamMember.FamMemId, FamMember.Name, Contribution.ConAmount FROM FamMember
-        INNER JOIN Contribution ON FamMember.FamMemId = Contribution.FamMemId
-        INNER JOIN BookingYear ON Contribution.BookYearId = BookingYear.BookYearId
-        WHERE FamMember.FamId = ? AND BookingYear.Year = ?');
-        $req->execute([$famid, $year]);
-        return $req->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $db = self::getConnection();
+    $req = $db->prepare('SELECT FamMember.FamMemId, FamMember.Name, FamMember.MemTypId, 
+    Contribution.ConAmount FROM FamMember
+    INNER JOIN Contribution ON FamMember.FamMemId = Contribution.FamMemId
+    INNER JOIN BookingYear ON Contribution.BookYearId = BookingYear.BookYearId
+    WHERE FamMember.FamId = ? AND BookingYear.Year = ?');
+    $req->execute([$famid, $year]);
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
 
     public static function updateAmount(INT $famMemId, float $amount, String $year) {
-    $db = self::getConnection();
-    $req = $db->prepare('UPDATE Contribution 
+        $db = self::getConnection();
+        $req = $db->prepare('UPDATE Contribution 
         INNER JOIN BookingYear ON Contribution.BookYearId = BookingYear.BookYearId
         SET ConAmount = ? 
         WHERE Contribution.FamMemId = ? AND BookingYear.Year = ?');
-    $req->execute([$amount, $famMemId, $year]);
-}
+        $req->execute([$amount, $famMemId, $year]);
+    }
+
 }
 ?>

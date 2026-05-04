@@ -35,7 +35,8 @@
                 }
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
-                    echo '<a href="Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="../Contribution/index.php">Contributie Beheer</a>';
+                    echo '<a href="../Membertype/index.php">Membertype Beheer</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin'){

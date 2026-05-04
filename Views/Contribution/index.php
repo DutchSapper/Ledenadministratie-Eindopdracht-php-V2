@@ -89,7 +89,6 @@
                             echo "<th>" . $family['Famname'] . "</th>";
                             echo "<td>€" . $family['TotalContribution'] . "</td>";
                             echo "<td><a href='edit.php?FamId=" . $family['FamId'] . "&year=" . $selectedYear . "'><button>Bewerken</button></a></td>";
-                            echo "<td><a href='../FamMembers/index.php?Famid=" . $family['FamId'] . "'><button>Contributie Beheren</button></a></td>";
                         echo "</tr>";
 
                         // Leden per familie tonen

@@ -5,11 +5,12 @@
         exit();
     }
     require_once '../../Models/Contribution.php';
-    require_once '../../Models/FamMember.php';
+    require_once '../../Models/Membertype.php';
 
     $famid = $_GET['FamId'];
     $year = $_GET['year'];
     $members = Contribution::MemberContribution($famid, $year);
+    $membertypes = Membertype::getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,21 +48,31 @@
                 <h2>Contributie Bewerken</h2>
             </div>
             <br>
-            <form method="POST" action="../../../Controllers/ContributionController.php">
+            <form method="POST" action="../../Controllers/ContributionController.php">
                 <input type="hidden" name="action" value="edit">
                 <input type="hidden" name="year" value="<?php echo $year; ?>">
                 <table>
                     <tr>
                         <th>Naam</th>
-                        <th>Contributie bedrag</th>
+                        <th>Soort Lid</th>
+                        <th>Huidig bedrag</th>
                     </tr>
                     <?php foreach ($members as $member): ?>
                         <tr>
                             <td><?php echo $member['Name']; ?></td>
                             <td>
                                 <input type="hidden" name="famMemId[]" value="<?php echo $member['FamMemId']; ?>">
-                                <input type="number" step="0.01" name="amount[]" value="<?php echo $member['ConAmount']; ?>">
+                                <select name="memTypId[]">
+                                    <?php foreach ($membertypes as $type): ?>
+                                        <option value="<?php echo $type['MemTypId']; ?>"
+                                            <?php echo $type['MemTypId'] == $member['MemTypId'] ? 'selected' : ''; ?>>
+                                            <?php echo $type['Description']; ?> 
+                                            (<?php echo $type['DiscountPercentage']; ?>% korting)
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </td>
+                            <td>€<?php echo $member['ConAmount']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

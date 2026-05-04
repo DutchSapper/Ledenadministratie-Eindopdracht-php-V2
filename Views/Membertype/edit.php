@@ -53,7 +53,7 @@
                 <h2>Membertype Bewerken</h2>
             </div>
             <br>
-            <form method="POST" action="../../../Controllers/MemberTypeController.php">
+            <form method="POST" action="../../Controllers/MemberTypeController.php">
                 <label>Omschrijving:</label><br>
                 <input type="text" name="description" value="<?php echo $type['Description']; ?>" required><br><br>
                 <label>Korting %:</label><br>

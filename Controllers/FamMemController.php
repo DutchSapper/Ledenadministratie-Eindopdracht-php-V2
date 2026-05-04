@@ -25,8 +25,7 @@
     if ($action === 'edit') {
         $memberid = $_POST['id'];
         FamMember::updateMember($name, $dateofbirth, $memdes, $memberid);
-        var_dump($famid);
-        exit;
+        
         header('Location: ../Views/FamMembers/index.php?Famid=' . $famid);
         exit();
     }   
