@@ -33,6 +33,7 @@
             <?php 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'secretaris'){
                     echo '<a href="../Families/index.php">Familie Beheer</a>';
+                    echo '<a href="../Families/create.php">Familie Toevoegen</a>';
                 }
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
                     echo '<a href="index.php">Contributie Beheer</a>';

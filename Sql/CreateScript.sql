@@ -117,8 +117,8 @@ VALUES  -- Fam "Heskes"
 
 -- Testdata is added, contribution will be done bij PHP
 INSERT INTO Contribution (FamMemId, MemTypId, BookYearId, Age, ConAmount)
-VALUES  ('1', '4', '2', '29', '100.00'),
-        ('2', '4', '2', '29', '100.00'),
+VALUES  ('1', '4', '2', '29', '75.00'),
+        ('2', '4', '2', '29', '75.00'),
         ('3', '1', '2', '0', '50.00'),
         ('1', '4', '3', '30', '100.00'),
         ('2', '4', '3', '30', '100.00'),

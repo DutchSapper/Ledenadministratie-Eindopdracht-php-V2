@@ -10,15 +10,19 @@
         $action = $_POST['action'];
         if ($action === 'create') {
             Membertype::create($_POST['description'], $_POST['discount']);
+            header('Location: ../Views/Membertype/index.php');
+            exit();
         }
         if ($action === 'edit') {
             Membertype::update($_POST['id'], $_POST['description'], $_POST['discount']);
+            header('Location: ../Views/Membertype/index.php');
+            exit();
         }
         
         if ($action === 'delete') {
-        Membertype::deleteMembertype($_POST['id']);
-        header('Location: ../Views/Membertype/index.php');
-        exit();
+            Membertype::deleteMembertype($_POST['id']);
+            header('Location: ../Views/Membertype/index.php');
+            exit();
         }      
 
     }

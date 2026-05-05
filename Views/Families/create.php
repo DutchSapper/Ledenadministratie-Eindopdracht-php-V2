@@ -18,7 +18,7 @@
         <h1>Ledenadministratie</h1>
     </div>
     <div class="title_right">
-        <a href="../index.php">Logout <?php session_abort(); ?></a>
+        <a href="../../index.php">Logout <?php session_abort(); ?></a>
     </div>
     <div class="body_container">
         <div class="body_side">
