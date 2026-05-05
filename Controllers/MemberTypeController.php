@@ -4,6 +4,7 @@
         header('Location: ../Views/Dashboard.php');
         exit();
     }
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once '../Models/Membertype.php';
         $action = $_POST['action'];
@@ -13,7 +14,12 @@
         if ($action === 'edit') {
             Membertype::update($_POST['id'], $_POST['description'], $_POST['discount']);
         }
+        
+        if ($action === 'delete') {
+        Membertype::deleteMembertype($_POST['id']);
         header('Location: ../Views/Membertype/index.php');
         exit();
-    }   
+        }      
+
+    }
 ?>

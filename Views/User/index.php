@@ -66,7 +66,7 @@
                                 echo "<td>". $user['Role']."</th>";
                                 echo "<td>". $user['Password']."</th>";
                                 echo "<td><a href='edit.php?UserId=" . $user['UserId'] . "'><button>Bewerken</button></a></td>";
-                                echo "<td><a href=''><button class='delete'>Verwijderen</button></a></td>";
+                                echo "<td><a href='delete.php?UserId=" . $user['UserId'] . "'><button class='delete'>Verwijderen</button></a></td>";
                             echo "</tr>";
                         }
                     echo "</table>";

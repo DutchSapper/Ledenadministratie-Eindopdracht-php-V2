@@ -19,6 +19,13 @@
             return $req->fetch(PDO::FETCH_ASSOC);
         }
 
+        public static function getMemberById(INT $famMemId) {
+            $db = self::getConnection();
+            $req = $db->prepare('SELECT * FROM FamMember WHERE FamMemId = ?');
+            $req->execute([$famMemId]);
+            return $req->fetch(PDO::FETCH_ASSOC);
+        }
+
         public static function createMember(String $name, String $dateofbirth, String $memdes, INT $famid){
             $db = self::getConnection();
             $req = $db->prepare('INSERT INTO fammember (name, dateofbirth, memdes, famid) VALUES (?, ?, ?, ?) ');
@@ -31,16 +38,16 @@
             $req->execute([$name, $dateofbirth, $memdes, $memberid]);
         }
 
-        public static function deleteMember(INT $memberid){
-            $db = self::getConnection();
-            $req = $db->prepare('DELETE FROM fammember WHERE FamMemId = ?');
-            $req->execute([$memberid]);
-        }
-
         public static function updateMemTyp(INT $famMemId, INT $memTypId) {
             $db = self::getConnection();
             $req = $db->prepare('UPDATE FamMember SET MemTypId = ? WHERE FamMemId = ?');
             $req->execute([$memTypId, $famMemId]);
+        }
+
+        public static function deleteMember(INT $famMemId) {
+            $db = self::getConnection();
+            $req = $db->prepare('DELETE FROM FamMember WHERE FamMemId = ?');
+            $req->execute([$famMemId]);
         }
     }
 ?>

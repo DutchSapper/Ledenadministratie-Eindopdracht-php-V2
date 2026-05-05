@@ -4,10 +4,17 @@
         header('Location: ../Views/Dashboard.php');
         exit();
     }
-    
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    require_once '../Models/Family.php';
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];
+
+    $famid = htmlspecialchars($_POST['id']);
+    if ($action === 'delete') {
+            Family::deleteFam($famid);
+            header('Location: ../Views/Families/index.php');
+            exit();
+        }
 
     $famname = htmlspecialchars($_POST['famname']);
     $adress = htmlspecialchars($_POST['adress']);
@@ -15,19 +22,19 @@
     $postcode = htmlspecialchars($_POST['postcode']);
     $country = htmlspecialchars($_POST['country']);
     
-    require_once '../Models/Family.php';
+  
     
     if ($action === 'create') {
         Family::createFam($famname, $adress, $city, $postcode, $country);
         header('Location: ../Views/FamMembers/create.php');
         exit();
     }
-
-        
-    $famid = htmlspecialchars($_POST['id']);
+   
     if ($action === 'edit') {
         Family::updateFam($famid, $famname, $adress, $city, $postcode, $country);
         header('Location: ../Views/Families/index.php');
         exit();
     }
+
+    
 }

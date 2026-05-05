@@ -29,6 +29,13 @@
         header('Location: ../Views/FamMembers/index.php?Famid=' . $famid);
         exit();
     }   
+
+    if ($action === 'delete') {
+        $famMemId = $_POST['id'];
+        FamMember::deleteMember($famMemId);
+        header('Location: ../Views/FamMembers/index.php?Famid=' . $famid);
+        exit();
+    }
 }
 
 ?>

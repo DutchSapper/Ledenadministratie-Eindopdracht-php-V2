@@ -37,5 +37,11 @@ Class Membertype {
         $req->execute([$famid]);
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function deleteMembertype(INT $memTypId) {
+        $db = self::getConnection();
+        $req = $db->prepare('DELETE FROM MemberType WHERE MemTypId = ?');
+        $req->execute([$memTypId]);
+    }
 }
 ?>

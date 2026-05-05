@@ -70,7 +70,7 @@
                             echo "<td>" . $family['Country'] . "</td>";
                             echo "<td><a href='edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
                             echo "<td><a href='../FamMembers/index.php?Famid=" . $family['FamId'] . "'><button>Leden beheren</button></a></td>";
-                            echo "<td><a href=''.php?Famid=" . $family['FamId'] . "'><button class='delete'>Verwijderen</button></a></td>";
+                            echo "<td><a href='delete.php?FamId=" . $family['FamId'] . "'><button class='delete'>Verwijderen</button></a></td>";
                         echo "</tr>";
 
                         $fammembers = FamMember::getFamMembers($family['FamId']);

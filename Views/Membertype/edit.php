@@ -59,6 +59,7 @@
                 <label>Korting %:</label><br>
                 <input type="number" name="discount" value="<?php echo $type['DiscountPercentage']; ?>" min="0" max="100" required><br><br>
                 <input type="hidden" name="action" value="edit">
+                <input type="hidden" name="id" value="<?php echo $type['MemTypId']; ?>">
                 <button type="submit">Opslaan</button>
                 <a href="index.php"><button type="button">Annuleren</button></a>
             </form>

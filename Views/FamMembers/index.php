@@ -28,7 +28,7 @@
         <h1>Ledenadministratie</h1>
     </div>
     <div class="title_right">
-        <a href="../index.php">Logout <?php session_abort(); ?></a>
+        <a href="../../index.php">Logout <?php session_abort(); ?></a>
     </div>
     <div class="body_container">
         <div class="body_side">
@@ -81,6 +81,7 @@
                                 echo "<td>" . $member['MemDes'] . "</td>";
                                 echo "<td>" . $memtypes[$index]['Description'] . "</td>";
                                 echo "<td><a href='edit.php?FamMemId=" . $member['FamMemId'] . "'><button>Bewerken</button></a></td>";
+                                echo "<td><a href='delete.php?FamMemId=" . $member['FamMemId'] . "&Famid=" . $famid . "'><button class='delete'>Verwijderen</button></a></td>";
                             echo "</tr>";
                         }
                         echo "</tr>";

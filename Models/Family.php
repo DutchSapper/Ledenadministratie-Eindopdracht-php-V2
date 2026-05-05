@@ -31,6 +31,20 @@
             $req = $db->prepare('INSERT INTO families (Famname, Adress, City, Postcode, Country) VALUES (?, ?, ?, ?, ?) ');
             $req->execute([$famname, $adress, $city, $postcode, $country]);
         }
-
+        
+        public static function deleteFam(INT $famid) {
+            $db = self::getConnection();
+            // Eerst contributie van leden verwijderen
+            $req = $db->prepare('DELETE Contribution FROM Contribution 
+            INNER JOIN FamMember ON Contribution.FamMemId = FamMember.FamMemId 
+            WHERE FamMember.FamId = ?');
+            $req->execute([$famid]);
+            // Dan leden verwijderen
+            $req = $db->prepare('DELETE FROM FamMember WHERE FamId = ?');
+            $req->execute([$famid]);
+            // Dan familie verwijderen
+            $req = $db->prepare('DELETE FROM Families WHERE FamId = ?');
+            $req->execute([$famid]);
+        }
     }
 ?>

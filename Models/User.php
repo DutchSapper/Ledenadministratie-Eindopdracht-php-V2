@@ -42,6 +42,12 @@
             $req->execute([$userid]);
             return $req->fetch(PDO::FETCH_ASSOC);
         }
+
+        public static function deleteUser(INT $userId) {
+            $db = self::getConnection();
+            $req = $db->prepare('DELETE FROM LoginUsers WHERE UserId = ?');
+            $req->execute([$userId]);
+        }
         
     }
 ?>

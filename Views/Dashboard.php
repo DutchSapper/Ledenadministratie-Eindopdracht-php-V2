@@ -33,7 +33,7 @@
 
                 if ($_SESSION['Role'] == 'admin' || $_SESSION['Role'] == 'penningmeester'){
                     echo '<a href="Contribution/index.php">Contributie Beheer</a>';
-                    echo '<a href="Membertype/index.php">Member Beheer</a>';
+                    echo '<a href="Membertype/index.php">Membertype Beheer</a>';
                 }
 
                 if ($_SESSION['Role'] == 'admin'){
@@ -66,7 +66,6 @@
                         echo "<table>";
                             echo "<tr>";    
                                 echo "<th>Familie naam:</th>";                      // Family name
-                                echo "<th>Familie Leden:</th>";                     // Family Members
                                 echo "<th>Contributie kosten:</th>";                // Total Contribut
                             echo "</tr>"; 
                                     require_once '../Models/Contribution.php';
@@ -95,7 +94,6 @@
                                         foreach ($families as $family) {
                                             echo "<tr class='tr_family'>";
                                                 echo "<td>" . $family['Famname'] . "</td>";
-                                                echo "<td> </td>";
                                                 echo "<td>€" . $family['TotalContribution'] . "</td>";
                                                 echo "<td><a href='Families/edit.php?Famid=" . $family['FamId'] . "'><button>Bewerken</button></a></td>";
                                             echo "</tr>";
@@ -103,7 +101,6 @@
                                             $fammembers = FamMember::getFamMembers($family['FamId']);
                                             foreach ($fammembers as $member) {
                                                 echo "<tr class='tr_member'>";
-                                                    echo "<td></td>";
                                                     echo "<td>" . $member['Name'] . "</td>";
                                                 echo "</tr>";
                                             }
@@ -113,7 +110,6 @@
                                         foreach ($families as $family) {
                                             echo "<tr class='tr_family'>";
                                                 echo "<td>" . $family['Famname'] . "</td>";
-                                                echo "<td> </td>";
                                                 echo "<td>€" . $family['TotalContribution'] . "</td>";
                                                 echo "<td><a href='Contribution/edit.php?Famid=" . $family['FamId'] . "'><button>Contributie Beheren</button></a></td>";
                                             echo "</tr>";
@@ -121,7 +117,6 @@
                                             $fammembers = FamMember::getFamMembers($family['FamId']);
                                             foreach ($fammembers as $member) {
                                                 echo "<tr class='tr_member'>";
-                                                    echo "<td></td>";
                                                     echo "<td>" . $member['Name'] . "</td>";
                                                 echo "</tr>";
                                             }
