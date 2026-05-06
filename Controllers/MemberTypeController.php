@@ -19,11 +19,11 @@
             exit();
         }
         
-        if ($action === 'delete') {
-            Membertype::deleteMembertype($_POST['id']);
-            header('Location: ../Views/Membertype/index.php');
-            exit();
-        }      
+        // if ($action === 'delete') {
+        //     Membertype::deleteMembertype($_POST['id']);
+        //     header('Location: ../Views/Membertype/index.php');
+        //     exit();
+        // }      
 
     }
 ?>

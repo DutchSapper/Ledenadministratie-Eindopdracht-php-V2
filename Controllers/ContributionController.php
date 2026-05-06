@@ -19,17 +19,19 @@
             foreach ($famMemIds as $index => $famMemId) {
                 $memTypId = $memTypIds[$index];
                 
-                // Korting ophalen van het gekozen membertype
+                // make a record is not exist
+                Contribution::createContribution($famMemId, $memTypId, $year);
+
+                // Collect Discount from the chosen Membertype
                 $membertype = Membertype::getById($memTypId);
                 $discount = $membertype['DiscountPercentage'];
-                
-                // Bedrag berekenen: €100 - korting%
+                // Calculate Amount (100 - discount)
                 $amount = 100 - (100 * $discount / 100);
 
-                // MemberType updaten in FamMember
+                // Update MemberType in FamMember
                 FamMember::updateMemTyp($famMemId, $memTypId);
 
-                // Bedrag updaten in Contribution
+                // Update amount in Contribution
                 Contribution::updateAmount($famMemId, $amount, $year);
             }
         }

@@ -79,7 +79,7 @@
                                 echo "<td>" . date('d-m-Y', strtotime($member['DateOfBirth'])). "</td>";
                                 echo "<td>" . Date('Y') - date('Y', strtotime($member['DateOfBirth'])) . "</td>";
                                 echo "<td>" . $member['MemDes'] . "</td>";
-                                echo "<td>" . $memtypes[$index]['Description'] . "</td>";
+                                echo "<td>" . ($memtypes[$index]['Description'] ?? 'Geen') . "</td>";
                                 echo "<td><a href='edit.php?FamMemId=" . $member['FamMemId'] . "'><button>Bewerken</button></a></td>";
                                 echo "<td><a href='delete.php?FamMemId=" . $member['FamMemId'] . "&Famid=" . $famid . "'><button class='delete'>Verwijderen</button></a></td>";
                             echo "</tr>";

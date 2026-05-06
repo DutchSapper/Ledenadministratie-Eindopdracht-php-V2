@@ -10,7 +10,7 @@
             $req = $db->query('SELECT BookYearId, Year FROM bookingyear');
             return $req->fetchAll(PDO::FETCH_ASSOC);
         }
-        //  getByYear()
+        //  getByYear() select the correct year to schow the right contribution
         public static function getByYear(String $year) {
             $db = self::getConnection();
             $req = $db->prepare('SELECT * FROM bookingyear WHERE Year = ?');

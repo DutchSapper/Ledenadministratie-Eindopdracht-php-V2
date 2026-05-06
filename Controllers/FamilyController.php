@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 'admin') {
+    if (!isset($_SESSION['Username']) || $_SESSION['Role'] != 'admin' && $_SESSION['Role'] != 'secretaris') {
         header('Location: ../Views/Dashboard.php');
         exit();
     }
@@ -25,8 +25,8 @@
   
     
     if ($action === 'create') {
-        Family::createFam($famname, $adress, $city, $postcode, $country);
-        header('Location: ../Views/FamMembers/create.php');
+        $famid = Family::createFam($famname, $adress, $city, $postcode, $country);
+        header('Location: ../Views/FamMembers/index.php?Famid='. $famid);
         exit();
     }
    

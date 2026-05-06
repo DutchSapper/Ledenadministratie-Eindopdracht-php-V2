@@ -43,6 +43,7 @@
             return $req->fetch(PDO::FETCH_ASSOC);
         }
 
+        // delteUser() will delete the user by userId
         public static function deleteUser(INT $userId) {
             $db = self::getConnection();
             $req = $db->prepare('DELETE FROM LoginUsers WHERE UserId = ?');

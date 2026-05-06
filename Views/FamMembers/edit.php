@@ -7,7 +7,7 @@
 
     require_once '../../Models/FamMember.php';
     $famMemId = $_GET['FamMemId'];
-    $member = FamMember::getFamMember($famMemId);
+    $member = FamMember::getMemberById($famMemId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,9 +58,10 @@
                     <input id="dateofbirth" name="dateofbirth" value="<?php echo date('d-m-Y', strtotime($member['DateOfBirth'])); ?>">
                     <label for="">Beschrijving</label>
                     <input id="memdes" name="memdes" value="<?php echo $member['MemDes']; ?>">
-
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" name="id" value="<?php echo $member['FamMemId']; ?>">
+                    <input type="hidden" name="famid" value="<?php echo $member['FamId']; ?>">
+                    
                     <br>
                     <button type="submit">Uitvoeren</button>
                 </form>

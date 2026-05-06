@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS MemberType (
     DiscountPercentage int
 );
 
--- Table "FamMember" is created, every person in a family is a own fammember 
+-- Table "FamMember" is created, every person in a family is its own fammember 
 CREATE TABLE IF NOT EXISTS FamMember (
     FamMemId int AUTO_INCREMENT PRIMARY KEY,
     Name varchar (100) NOT NULL,                                    -- Name of family member
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS FamMember (
     CONSTRAINT FK_MemTypId FOREIGN KEY (MemTypId) REFERENCES MemberType (MemTypId)
 );
 
+-- Table "BookingYear" is created, Every year makes a booking year to calculate the contribution.
 CREATE TABLE IF NOT EXISTS BookingYear (
     BookYearId int AUTO_INCREMENT PRIMARY KEY,                      -- The id of the year
     Year YEAR                                                       -- The booking year
@@ -54,9 +55,9 @@ CREATE TABLE IF NOT EXISTS Contribution (
 -- Tabel "LoginData"
 CREATE TABLE IF NOT EXISTS LoginUsers (
     UserId  int AUTO_INCREMENT PRIMARY KEY,                         -- Id number of the user account
-    Username varchar(100),
-    Role varchar(100),
-    Password varchar(100)
+    Username varchar(100),                                          -- Username for the acount
+    Role varchar(100),                                              -- Role is to determine the actions a user can do
+    Password varchar(100)                                           -- Password for the useracount the, password is hashed in the program
 );
 
 -- The different families are created with there own values, two families have grantparentsliving on differend adresses

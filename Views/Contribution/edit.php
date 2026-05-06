@@ -73,7 +73,7 @@
                                     <?php endforeach; ?>
                                 </select>
                             </td>
-                            <td>€<?php echo $member['ConAmount']; ?></td>
+                            <td>€<?php echo $member['ConAmount'] ?? '0.00'; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>
